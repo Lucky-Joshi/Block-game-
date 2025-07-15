@@ -4,7 +4,7 @@ const blockPicker = document.getElementById("block-picker");
 const gameOverModal = document.getElementById("game-over");
 
 const boardSize = 10;
-const cellSize = 32; // in px for snap calculation
+const cellSize = 40; // in px for snap calculation
 let score = 0;
 let grid = Array(boardSize).fill().map(() => Array(boardSize).fill(0));
 let currentBlocks = [];
@@ -30,7 +30,7 @@ function renderBoard() {
   for (let y = 0; y < boardSize; y++) {
     for (let x = 0; x < boardSize; x++) {
       const cell = document.createElement("div");
-      cell.className = `w-8 h-8 sm:w-10 sm:h-10 rounded border ${grid[y][x] ? "bg-yellow-400" : "bg-slate-800 border-slate-700"}`;
+      cell.className = `w-[40px] h-[40px] rounded border ${grid[y][x] ? "bg-yellow-400" : "bg-slate-800 border-slate-700"}`;
       cell.dataset.x = x;
       cell.dataset.y = y;
       board.appendChild(cell);
@@ -62,7 +62,8 @@ function renderBlock(shape, index) {
     rowDiv.className = "flex gap-0.5";
     row.forEach(cell => {
       const cellDiv = document.createElement("div");
-      cellDiv.className = `w-4 h-4 sm:w-5 sm:h-5 rounded ${cell ? "bg-pink-400" : "bg-transparent"}`;
+      cellDiv.className = `w-[40px] h-[40px] rounded ${cell ? "bg-pink-400" : "bg-transparent"}`;
+
       rowDiv.appendChild(cellDiv);
     });
     block.appendChild(rowDiv);
