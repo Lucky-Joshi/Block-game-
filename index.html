@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Block Game</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="assets/icon.png" />
+    <meta name="theme-color" content="#0f172a" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("service-worker.js");
+        });
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-900 text-white flex flex-col items-center min-h-screen p-4">
+    <h1 class="text-2xl font-bold my-4">Block Game</h1>
+
+    <!-- Scoreboard -->
+    <div id="score" class="text-lg mb-4">Score: 0</div>
+
+    <!-- Game Board -->
+    <div id="game-board" class="grid grid-cols-10 gap-1">
+      <!-- Blocks will be injected via JS -->
+    </div>
+
+    <!-- Block Picker -->
+    <div id="block-picker" class="mt-6 flex gap-2 justify-center">
+      <!-- Generated blocks go here -->
+    </div>
+
+    <!-- Game Over Modal -->
+    <div
+      id="game-over"
+      class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+    >
+      <div class="bg-white text-black p-6 rounded-lg text-center">
+        <h2 class="text-2xl font-bold mb-2">Game Over!</h2>
+        <button
+          onclick="location.reload()"
+          class="mt-4 bg-slate-900 text-white px-4 py-2 rounded"
+        >
+          Restart
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
